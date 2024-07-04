@@ -28,9 +28,9 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
     <div class="w3-right w3-padding-16">Mail</div>
     <!-- <div class="w3-center w3-padding-16">My Food</div> -->
     <div class="w3-center w3-padding-16">
-      <a href="./f1">F1</a>
-      <a href="./f2">F2</a>
-      <a href="./f3">F3</a>
+      <a href="{{route('route.f1')}}">F1</a>
+      <a href="{{route('route.f2')}}">F2</a>
+      <a href="{{route('route.f3')}}">F3</a>
     </div>
   </div>
 </div>
