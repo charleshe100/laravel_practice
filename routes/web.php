@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CatController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -21,3 +22,5 @@ Route::get('apple/f2', function () {
 Route::get('apple/f2/f3', function () {
     return view('f3');
 })->name('route.f3');
+
+Route::get('/hello', [CatController::class, 'hello'])->name('route.hello');
