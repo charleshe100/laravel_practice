@@ -42,7 +42,8 @@ a:hover{
       <a href="{{route('route.f1')}}">F1</a> | 
       <a href="{{route('route.f2')}}">F2</a> | 
       <a href="{{route('route.f3')}}">F3</a> | 
-      <a href="{{route('route.hello')}}">Hello</a>
+      <a href="{{route('route.hello')}}">Hello</a> | 
+      <a href="/pigs">Pigs</a>
     </div>
   </div>
 </div>

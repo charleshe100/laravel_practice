@@ -2,10 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CatController;
+use App\Http\Controllers\PigController;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::get('/', function () {
     return view('index');
@@ -24,3 +25,6 @@ Route::get('apple/f2/f3', function () {
 })->name('route.f3');
 
 Route::get('/hello', [CatController::class, 'hello'])->name('route.hello');
+
+// pig Resource Controllers
+Route::resource('pigs', PigController::class);
