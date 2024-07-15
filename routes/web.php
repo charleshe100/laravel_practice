@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CatController;
 use App\Http\Controllers\PigController;
+use App\Http\Controllers\DogController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -28,3 +29,6 @@ Route::get('/hello', [CatController::class, 'hello'])->name('route.hello');
 
 // pig Resource Controllers
 Route::resource('pigs', PigController::class);
+
+// dog Resource Controllers
+Route::resource('dogs', DogController::class);

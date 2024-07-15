@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pigs</title>
+    <title>Dogs</title>
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
 </head>
 <body>
 @include('include.navbar')
 <div class="container mt-3 w-25">
-  <h2>Pig Create</h2>
+  <h2>Dog Create</h2>
   <p>The .table-striped class adds zebra-stripes to a table:</p>  
-  <form action="{{route('pigs.store')}}" method="post">
+  <form action="{{route('dogs.store')}}" method="post">
     @csrf
   <div class="mb-3 mt-3 input-grou">
     <label for="name" class="form-label">Name:</label>
