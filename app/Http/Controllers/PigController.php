@@ -11,7 +11,9 @@ class PigController extends Controller
      */
     public function index()
     {
-        return view('pig.index');
+        // return view('pig.index');
+        $url = route('pigs.edit', ['pig' => 1]);
+        dd($url);
     }
 
     /**
@@ -28,7 +30,10 @@ class PigController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input=$request->except('_token');
+        dd($input);
+        // dd($request);
+        // dd("pig store ok!");
     }
 
     /**

@@ -32,3 +32,8 @@ Route::resource('pigs', PigController::class);
 
 // dog Resource Controllers
 Route::resource('dogs', DogController::class);
+
+// layouts & child
+Route::get('/child', function () {
+    return view('child');
+});
