@@ -1,6 +1,6 @@
 @extends('layouts.app')
  
-@section('title', 'Page Title')
+@section('title', '頁面標題')
  
 @section('sidebar')
     @parent

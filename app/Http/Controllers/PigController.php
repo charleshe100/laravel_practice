@@ -11,9 +11,9 @@ class PigController extends Controller
      */
     public function index()
     {
-        // return view('pig.index');
-        $url = route('pigs.edit', ['pig' => 1]);
-        dd($url);
+        return view('pig.index');
+        // $url = route('pigs.edit', ['pig' => 1]);
+        // dd($url);
     }
 
     /**

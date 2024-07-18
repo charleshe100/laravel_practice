@@ -31,7 +31,6 @@
       <a href="{{route('route.f3')}}">F3</a> | 
       <a href="{{route('route.hello')}}">Hello</a> | 
       <a href="{{route('pigs.index')}}">Pigs</a> | 
-      <a href="./child">Child</a>
     </div>
   </div>
 </div>

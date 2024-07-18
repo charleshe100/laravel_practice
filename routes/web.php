@@ -11,7 +11,7 @@ Route::get('/', function () {
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('route.index');
 
 Route::get('/apple_f1', function () {
     return view('f1');
