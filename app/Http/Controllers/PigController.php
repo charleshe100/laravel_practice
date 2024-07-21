@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\DB;
-
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\Pig;
 
 class PigController extends Controller
 {
@@ -12,9 +12,15 @@ class PigController extends Controller
      */
     public function index()
     {
+        // Model的sql語法
+        $data = Pig::all(); //all()後面就不用再接get()
+        // $data = Pig::get(); // 通常用在查詢條件後加上->get()
+        return view('pig.index',['data'=>$data]);
+
+        
         // 相當於是 SELECT * FROM 'pigs 然後 fetchAll
-        $data = DB::table('pigs')->get();
-        return view('pig.index', ['data' => $data]);
+        // $data = DB::table('pigs')->get();
+        // return view('pig.index', ['data' => $data]);
 
         // $data['pigs'] = DB::select('SELECT * FROM pigs');
         // $data['dogs'] = DB::select('SELECT * FROM dogs');
