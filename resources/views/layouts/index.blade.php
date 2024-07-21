@@ -9,6 +9,13 @@
 </head>
 <body>
 @include('include.navbar')
+
+@if (session('success'))
+    <div class="alert alert-success text-center">
+        {{ session('success') }}
+    </div>
+@endif
+
 <div class="container mt-3 w-25">
   <h2>@yield('title')</h2>
   <p>The .table-striped class adds zebra-stripes to a table:</p>  
@@ -24,30 +31,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>1</td>
-        <td>Amy</td>
-        <td>
-            <a href="">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="">Del</a>
-        </td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Bob</td>
-        <td>
-            <a href="">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="">Del</a>
-        </td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Cindy</td>
-        <td>
-            <a href="">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="">Del</a>
-        </td>
-      </tr>
+      @yield('tr')
     </tbody>
   </table>
 </div>

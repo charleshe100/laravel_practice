@@ -12,30 +12,8 @@ class PigController extends Controller
      */
     public function index()
     {
-        // 相當於是 SELECT * FROM 'pigs 然後 fetchAll
-        $data = DB::table('pigs')->get();
-        return view('pig.index', ['data' => $data]);
-
-        // $data['pigs'] = DB::select('SELECT * FROM pigs');
-        // $data['dogs'] = DB::select('SELECT * FROM dogs');
-        // // dd($data);
-        // return view('pig.index',['data'=>$data]);
-
-        // DB::table('pigs')->insert([
-        //     'name' => 'Funny',
-        //     'mobile' => '0977',
-        //     'address' => '彰化縣'
-        // ]);
-
-        // $affected = DB::table('dogs')
-        //       ->where('id', 6)
-        //       ->update(['name' => 'Guy']);
-        // dd($affected);
-
-        // return view('user.index', ['users' => $users]);
-        
-        // $url = route('pigs.edit', ['pig' => 1]);
-        // dd($url);
+        $datas=DB::select('SELECT * FROM pigs');        
+        return view('pig.index',['datas'=>$datas]);
     }
 
     /**
@@ -51,28 +29,12 @@ class PigController extends Controller
      */
     public function store(Request $request)
     {
-        $now=now();
-        //進行請求數據的驗證（validation）
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'mobile' => 'required|string|max:255',
-            'address' => 'required|string|max:255',
-        ]);
-    
-        DB::table('pigs')->insert([
-            'name' => $validatedData['name'],
-            'mobile' => $validatedData['mobile'],
-            'address' => $validatedData['address'],
-            'created_at' => $now,
-            'updated_at' => $now,
-        ]);
-    
-        $data = DB::table('pigs')->get();
-        return redirect()->route('pigs.index', ['data' => $data])->with('success', 'Pig added successfully.');
-        // $input=$request->except('_token');
-        // dd($input);
-        // dd($request);
-        // dd("pig store ok!");
+        DB::table('pigs')->Insert([
+            'name' => $_POST['name'],
+            'mobile' => $_POST['mobile'],
+            'address' => $_POST['address']
+            ]);
+        return view('pig.index');
     }
 
     /**
@@ -97,7 +59,6 @@ class PigController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $now=now();
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'mobile' => 'required|string|max:255',
@@ -108,8 +69,7 @@ class PigController extends Controller
               ->update([
                     'name' => $validatedData['name'],
                     'mobile' => $validatedData['mobile'],
-                    'address' => $validatedData['address'],
-                    'updated_at' => $now,
+                    'address' => $validatedData['address']
                     ]);
         
         return redirect()->route('pigs.index')->with('success', 'Pig updated successfully.');

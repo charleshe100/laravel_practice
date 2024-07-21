@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class DogController extends Controller
@@ -27,8 +27,14 @@ class DogController extends Controller
      */
     public function store(Request $request)
     {
-        $input=$request->except('_token');
-        dd($input);
+        DB::table('dogs')->updateOrInsert([
+            'name' => $_POST['name'],
+            'mobile' => $_POST['mobile'],
+            'address' => $_POST['address']
+            ]);
+        return view('pig.create');
+        // $input=$request->except('_token');
+        // dd($input);
         // dd($request);
         // dd("dog store ok!");
     }
