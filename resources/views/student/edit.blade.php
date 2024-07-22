@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title')</title>
+    <title>Student</title>
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
 </head>
 <body>
 @include('include.navbar')
 <div class="container mt-3 w-25">
-  <h2>@yield('title') Edit</h2>
+  <h2>Student Edit</h2>
   <p>The .table-striped class adds zebra-stripes to a table:</p>  
-  @yield('form')
+  <form action="{{route('students.update', ['student' => $data->id])}}" method="post">
     @csrf
     @method('PUT')
   <input type="hidden" name="id" value="{{$data->id}}">
@@ -23,10 +23,6 @@
   <div class="mb-3 mt-3 input-grou">
     <label for="mobile" class="form-label">Mobile:</label>
     <input type="text" class="form-control" id="mobile" value="{{$data->mobile->mobile}}" name="mobile">
-  </div>  
-  <div class="mb-3 mt-3 input-grou">
-    <label for="address" class="form-label">Address:</label>
-    <input type="text" class="form-control" id="address" value="{{$data->address}}" name="address">
   </div>  
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>

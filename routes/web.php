@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CatController;
 use App\Http\Controllers\PigController;
 use App\Http\Controllers\DogController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\MobileController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -37,3 +39,8 @@ Route::resource('dogs', DogController::class);
 Route::get('/child', function () {
     return view('child');
 });
+
+// student Resource Controllers
+Route::resource('students', StudentController::class);
+// mobile Resource Controllers
+Route::resource('mobiles', MobileController::class);
