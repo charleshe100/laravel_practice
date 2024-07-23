@@ -39,8 +39,8 @@
       <tr>
         <td>{{$item->id}}</td>
         <td>{{$item->name}}</td>  
-        <td>{{$item->mobile->student_id}}</td>
-        <td>{{$item->mobile->mobile}}</td>
+        <td>{{$item->mobileRelation->student_id}}</td>
+        <td>{{$item->mobileRelation->mobile}}</td>
         <td>
             <a href="{{ route('students.edit', ['student' => $item->id]) }}">
               <button class="btn btn-warning">Edit</button>

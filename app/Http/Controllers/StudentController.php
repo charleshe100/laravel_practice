@@ -14,7 +14,9 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $data=Student::all();
+        // $data=Student::all();
+        $data=Student::with('mobileRelation')->get(); // 預載入
+        // dd($data);
         return view('student.index',['data'=>$data]);
     }
 
@@ -61,7 +63,8 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        // $data = DB::table('students')->where('id', $id)->first();        
+        dd("student edit ok! $student");
+        // $data = DB::table('students')->where('id', $student->id)->first();        
         // return view('student.edit',['data'=>$data]);
     }
 

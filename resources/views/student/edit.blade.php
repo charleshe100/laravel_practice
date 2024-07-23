@@ -22,7 +22,7 @@
   </div>  
   <div class="mb-3 mt-3 input-grou">
     <label for="mobile" class="form-label">Mobile:</label>
-    <input type="text" class="form-control" id="mobile" value="{{$data->mobile->mobile}}" name="mobile">
+    <input type="text" class="form-control" id="mobile" value="{{$data->mobileRelation->mobile}}" name="mobile">
   </div>  
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
