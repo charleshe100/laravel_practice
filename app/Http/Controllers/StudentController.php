@@ -15,7 +15,7 @@ class StudentController extends Controller
     public function index()
     {
         // $data=Student::all();
-        $data=Student::with('mobileRelation')->get(); // 預載入
+        $data=Student::with('mobileRelation')->get(); // with 預載入
         // dd($data);
         return view('student.index',['data'=>$data]);
     }
@@ -38,7 +38,7 @@ class StudentController extends Controller
         //學生
         $data = new Student; 
         $data->name = $input['name']; 
-        $data->save(); //用save()的方式，就不用再特地去設定時間，它直接會儲存時間
+        $data->save(); 
 
         //手機
         $id=$data->id;
@@ -63,9 +63,10 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        dd("student edit ok! $student");
-        // $data = DB::table('students')->where('id', $student->id)->first();        
-        // return view('student.edit',['data'=>$data]);
+        // dd("student edit ok! $student");
+        $data = Student::where('id',$student->id)->with('mobileRelation')->first();   
+        // dd($data);
+        return view('student.edit',['data'=>$data]);
     }
 
     /**
@@ -73,22 +74,21 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student)
     {
-        // $now=now();
-        // $validatedData = $request->validate([
-        //     'name' => 'required|string|max:255',
-        //     'mobile' => 'required|string|max:255',
-        //     'address' => 'required|string|max:255',
-        // ]);
-        // DB::table('students')
-        //       ->where('id', $id)
-        //       ->update([
-        //             'name' => $validatedData['name'],
-        //             'mobile' => $validatedData['mobile'],
-        //             'address' => $validatedData['address'],
-        //             'updated_at' => $now,
-        //             ]);
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'mobile' => 'required|string|max:15',
+        ]);
+
+        $student->update([
+            'name' => $request->input('name'),
+        ]);
+
+        // 更新關聯的 mobile 資料
+        $student->mobileRelation->update([
+            'mobile' => $request->input('mobile'),
+        ]);
         
-        // return redirect()->route('students.index')->with('success', 'Student updated successfully.');
+        return redirect()->route('students.index')->with('success', 'Student updated successfully.');
     }
 
     /**
@@ -96,7 +96,8 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
-        // DB::table('students')->where('id', $id)->delete();
-        // return redirect()->route('students.index')->with('success', 'Student deleted successfully.');
+        $student->mobileRelation()->delete();
+        $student->delete();
+        return redirect()->route('students.index')->with('success', 'Student deleted successfully.');
     }
 }

@@ -10,6 +10,7 @@ class Mobile extends Model
 {
     use HasFactory;
     protected $table = 'mobiles';
+    protected $fillable = ['mobile'];
 
     public function student(): BelongsTo
     {

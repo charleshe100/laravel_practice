@@ -27,7 +27,7 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>id</th>
+        <th>No.</th>
         <th>name</th>
         <th>mobile_student_id</th>
         <th>mobile_mobile</th>
@@ -35,9 +35,9 @@
       </tr>
     </thead>
     <tbody>
-      @foreach ($data as $item)
+      @foreach ($data as $key => $item)
       <tr>
-        <td>{{$item->id}}</td>
+        <td>{{$key+1}}</td>
         <td>{{$item->name}}</td>  
         <td>{{$item->mobileRelation->student_id}}</td>
         <td>{{$item->mobileRelation->mobile}}</td>

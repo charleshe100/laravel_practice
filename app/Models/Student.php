@@ -10,9 +10,10 @@ class Student extends Model
 {
     use HasFactory;
     protected $table = 'students';
+    protected $fillable = ['name', 'mobile'];
 
     public function mobileRelation(): HasOne
     {
         return $this->hasOne(Mobile::class);
-    }
+    }    
 }
