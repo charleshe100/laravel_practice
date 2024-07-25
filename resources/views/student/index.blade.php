@@ -45,7 +45,7 @@
             <a href="{{ route('students.edit', ['student' => $item->id]) }}">
               <button class="btn btn-warning">Edit</button>
             </a>&nbsp;&nbsp;&nbsp;&nbsp;
-            <form action="{{ route('students.destroy', ['student' => $item->id]) }}" method="POST" style="display:inline;">
+            <form action="{{ route('students.destroy', ['student' => $item->id]) }}" method="post" style="display:inline;">
               @csrf
               @method('DELETE')
               <button type="submit" class="btn btn-danger">Del</button>

@@ -42,10 +42,10 @@ class StudentController extends Controller
 
         //手機
         $id=$data->id;
-        $data = new Mobile; 
-        $data->student_id = $id; 
-        $data->mobile = $input['mobile']; 
-        $data->save();
+        $item = new Mobile; 
+        $item->student_id = $id; 
+        $item->mobile = $input['mobile']; 
+        $item->save();
         
         return redirect()->route('students.index');
     }
@@ -74,19 +74,41 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'mobile' => 'required|string|max:15',
-        ]);
+        // $request->validate([
+        //     'name' => 'required|string|max:255',
+        //     'mobile' => 'required|string|max:15',
+        // ]);
 
-        $student->update([
-            'name' => $request->input('name'),
-        ]);
+        // $student->update([
+        //     'name' => $request->input('name'),
+        // ]);
 
-        // 更新關聯的 mobile 資料
-        $student->mobileRelation->update([
-            'mobile' => $request->input('mobile'),
-        ]);
+        // // 更新關聯的 mobile 資料
+        // $student->mobileRelation->update([
+        //     'mobile' => $request->input('mobile'),
+        // ]);
+
+        $input=$request->except('_token','method');
+
+        // 更新學生資料
+        $id=$student->id;
+        $data=Student::where('id',$id)->first();
+        $data->name=$input['name'];
+        $data->save();
+        
+        // 更新手機資料
+        // 方法二、先把子表資料刪除，再新增資料        
+        Mobile::where('student_id',$id)->delete();
+
+        $item=new Mobile;
+        $item->student_id = $id; 
+        $item->mobile = $input['mobile']; 
+        $item->save();
+
+        // 方法一、直接更新子表資料
+        // $data=Mobile::where('student_id',$id)->first();
+        // $data->mobile=$input['mobile'];
+        // $data->save();
         
         return redirect()->route('students.index')->with('success', 'Student updated successfully.');
     }
