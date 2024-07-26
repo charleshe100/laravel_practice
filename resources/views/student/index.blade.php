@@ -42,6 +42,9 @@
         <td>{{$item->mobileRelation->student_id}}</td>
         <td>{{$item->mobileRelation->mobile}}</td>
         <td>
+            <a href="{{ route('students.show', ['student' => $item->id]) }}">
+              <button class="btn btn-info">Show</button>
+            </a>&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="{{ route('students.edit', ['student' => $item->id]) }}">
               <button class="btn btn-warning">Edit</button>
             </a>&nbsp;&nbsp;&nbsp;&nbsp;

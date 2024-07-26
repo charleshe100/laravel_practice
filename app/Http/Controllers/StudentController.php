@@ -55,7 +55,9 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        //
+        $id=$student->id;
+        $data = Student::findOrFail($id);
+        return view('student.show', compact('data'));
     }
 
     /**
