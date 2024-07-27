@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('mobiles', function (Blueprint $table) {
-            $table->renameColumn('name', 'mobile');
+        Schema::create('loves', function (Blueprint $table) {
+            $table->id();
+            $table->string('love');
+            $table->timestamps();
+            $table->unsignedBigInteger('student_id');
+            $table->foreign('student_id')->references('id')->on('students');
         });
     }
 
@@ -21,8 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('mobiles', function (Blueprint $table) {
-            $table->renameColumn('mobile', 'name');
-        });
+        Schema::dropIfExists('loves'); 
     }
 };

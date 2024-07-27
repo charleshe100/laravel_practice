@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('mobiles', function (Blueprint $table) {
             $table->id();
-            $table->integer('student_id');
-            $table->string('name');
+            // $table->integer('student_id');
+            $table->string('mobile');
             $table->timestamps();
+            $table->unsignedBigInteger('student_id');
+            $table->foreign('student_id')->references('id')->on('students');
         });
     }
 

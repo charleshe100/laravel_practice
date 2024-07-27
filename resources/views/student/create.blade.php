@@ -16,11 +16,15 @@
     @csrf
   <div class="mb-3 mt-3 input-grou">
     <label for="name" class="form-label">Name:</label>
-    <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" required>
+    <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
   </div>  
   <div class="mb-3 mt-3 input-grou">
     <label for="mobile" class="form-label">Mobile:</label>
-    <input type="text" class="form-control" id="mobile" placeholder="Enter mobile" name="mobile" required>
+    <input type="text" class="form-control" id="mobile" placeholder="Enter mobile" name="mobile">
+  </div>  
+  <div class="mb-3 mt-3 input-grou">
+    <label for="love" class="form-label">Love:</label>
+    <input type="text" class="form-control" id="love" placeholder="Enter love" name="love">
   </div>  
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>

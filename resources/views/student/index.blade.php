@@ -39,8 +39,9 @@
       <tr>
         <td>{{$key+1}}</td>
         <td>{{$item->name}}</td>  
-        <td>{{$item->mobileRelation->student_id}}</td>
+        {{-- <td>{{$item->mobileRelation->student_id}}</td> --}}
         <td>{{$item->mobileRelation->mobile}}</td>
+        <td>{{$item->love->love}}</td>
         <td>
             <a href="{{ route('students.show', ['student' => $item->id]) }}">
               <button class="btn btn-info">Show</button>

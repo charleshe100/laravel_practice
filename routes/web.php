@@ -6,6 +6,7 @@ use App\Http\Controllers\PigController;
 use App\Http\Controllers\DogController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\MobileController;
+use App\Http\Controllers\LoveController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -44,3 +45,5 @@ Route::get('/child', function () {
 Route::resource('students', StudentController::class);
 // mobile Resource Controllers
 Route::resource('mobiles', MobileController::class);
+// love Resource Controllers
+Route::resource('loves', LoveController::class);

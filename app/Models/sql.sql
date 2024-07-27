@@ -17,3 +17,10 @@ VALUES
 (NULL, 4 , '0944', NULL, NULL),
 (NULL, 5 , '0955', NULL, NULL),
 (NULL, 6 , '0966', NULL, NULL);
+
+INSERT INTO `loves` (`id`, `love`, `created_at`, `updated_at`, `student_id`) 
+VALUES (NULL, '看電影', NULL, NULL, '3'),
+(NULL, '登山', NULL, NULL, '3'),
+(NULL, '打球', NULL, NULL, '3'),
+(NULL, '看動漫', NULL, NULL, '3'),
+(NULL, '寫code', NULL, NULL, '3');

@@ -15,9 +15,16 @@ class StudentController extends Controller
     public function index()
     {
         // $data=Student::all();
-        $data=Student::with('mobileRelation')->get(); // with 預載入
-        // dd($data);
-        return view('student.index',['data'=>$data]);
+        $data=Student::with('mobileRelation')->with('love')->get(); // with 預載入
+        // dd($data[0]);
+        foreach ($data as $key => $value) {
+            echo "$value->name <br>";
+            foreach ($value->love as $key2 => $value2) {
+                echo "&nbsp;&nbsp;&nbsp;&nbsp;$value2->love <br>";
+            }
+        }
+        
+        // return view('student.index',['data'=>$data]);
     }
 
     /**
@@ -66,7 +73,7 @@ class StudentController extends Controller
     public function edit(Student $student)
     {
         // dd("student edit ok! $student");
-        $data = Student::where('id',$student->id)->with('mobileRelation')->first();   
+        $data = Student::where('id',$student->id)->with('mobileRelation')->with('love')->first();   
         // dd($data);
         return view('student.edit',['data'=>$data]);
     }
