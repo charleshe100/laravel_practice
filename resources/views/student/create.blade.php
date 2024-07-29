@@ -23,7 +23,7 @@
     <input type="text" class="form-control" id="mobile" placeholder="Enter mobile" name="mobile">
   </div>  
   <div class="mb-3 mt-3 input-grou">
-    <label for="love" class="form-label">Love:</label>
+    <label for="love" class="form-label">Love:（ex:登山,跑步,php,javascript）</label>
     <input type="text" class="form-control" id="love" placeholder="Enter love" name="love">
   </div>  
   <button type="submit" class="btn btn-primary">Submit</button>
