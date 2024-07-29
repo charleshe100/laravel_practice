@@ -29,19 +29,25 @@
       <tr>
         <th>No.</th>
         <th>name</th>
-        <th>mobile_student_id</th>
+        {{-- <th>mobile_student_id</th> --}}
         <th>mobile_mobile</th>
+        <th>love_love</th>
         <th>operate</th>
       </tr>
     </thead>
     <tbody>
-      @foreach ($data as $key => $item)
+      @foreach ($data as $key => $item)      
       <tr>
         <td>{{$key+1}}</td>
         <td>{{$item->name}}</td>  
         {{-- <td>{{$item->mobileRelation->student_id}}</td> --}}
         <td>{{$item->mobileRelation->mobile}}</td>
-        <td>{{$item->love->love}}</td>
+        <td>
+          @foreach ($item->love as $value)
+            {{$value->love}}              
+          @endforeach
+
+        </td>
         <td>
             <a href="{{ route('students.show', ['student' => $item->id]) }}">
               <button class="btn btn-info">Show</button>
