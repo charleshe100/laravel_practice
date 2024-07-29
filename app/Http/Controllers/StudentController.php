@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use App\Models\Mobile;
+use App\Models\Love;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -17,14 +18,14 @@ class StudentController extends Controller
         // $data=Student::all();
         $data=Student::with('mobileRelation')->with('love')->get(); // with 預載入
         // dd($data[0]);
-        foreach ($data as $key => $value) {
-            echo "$value->name <br>";
-            foreach ($value->love as $key2 => $value2) {
-                echo "&nbsp;&nbsp;&nbsp;&nbsp;$value2->love <br>";
-            }
-        }
+        // foreach ($data as $key => $value) {
+        //     echo "$value->name <br>";
+        //     foreach ($value->love as $key2 => $value2) {
+        //         echo "&nbsp;&nbsp;&nbsp;&nbsp;$value2->love <br>";
+        //     }
+        // }
         
-        // return view('student.index',['data'=>$data]);
+        return view('student.index',['data'=>$data]);
     }
 
     /**
@@ -41,6 +42,9 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         $input=$request->except('_token');
+        $loves=$input['love'];
+        $loveArr=explode(',', $loves);
+        // dd($loveArr);
 
         //學生
         $data = new Student; 
@@ -53,6 +57,15 @@ class StudentController extends Controller
         $item->student_id = $id; 
         $item->mobile = $input['mobile']; 
         $item->save();
+        
+        //愛好
+        $id=$data->id;
+        foreach ($loveArr as $value) {
+            $itemlove = new Love; 
+            $itemlove->student_id = $id; 
+            $itemlove->love = $value; 
+            $itemlove->save();
+        }
         
         return redirect()->route('students.index');
     }
@@ -73,7 +86,7 @@ class StudentController extends Controller
     public function edit(Student $student)
     {
         // dd("student edit ok! $student");
-        $data = Student::where('id',$student->id)->with('mobileRelation')->with('love')->first();   
+        $data = Student::where('id',$student->id)->with('mobileRelation')->with('love')->first();
         // dd($data);
         return view('student.edit',['data'=>$data]);
     }
