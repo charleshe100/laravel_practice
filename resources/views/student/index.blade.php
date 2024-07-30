@@ -44,7 +44,7 @@
         <td>{{$item->mobileRelation->mobile}}</td>
         <td>
           @foreach ($item->love as $value)
-            {{$value->love}}              
+            {{$value->love}},              
           @endforeach
 
         </td>

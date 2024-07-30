@@ -24,6 +24,10 @@
     <label for="mobile" class="form-label">Mobile:</label>
     <input type="text" class="form-control" id="mobile" value="{{$data->mobileRelation->mobile}}" name="mobile">
   </div>  
+  <div class="mb-3 mt-3 input-grou">
+    <label for="love" class="form-label">Love:</label>    
+    <input type="text" class="form-control" id="love" value="{{ $data->loves }}" name="love">
+</div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 </div>

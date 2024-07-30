@@ -85,9 +85,18 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        // dd("student edit ok! $student");
-        $data = Student::where('id',$student->id)->with('mobileRelation')->with('love')->first();
-        // dd($data);
+        $id=$student->id;
+        $data = Student::where('id',$id)->with('mobileRelation')->with('love')->first();
+        // $data['loves']='php,laravel,js';  //可用此方法直接新增一個欄位loves
+        
+        $loveArr=[];
+        foreach ($data->love as $value) {
+            // 將love的所有資料放進loveArr陣列中
+            array_push($loveArr,$value->love);
+        }   
+        // dd($loveArr);
+        $loves=implode(",",$loveArr);
+        $data['loves']=$loves;
         return view('student.edit',['data'=>$data]);
     }
 
@@ -96,21 +105,11 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student)
     {
-        // $request->validate([
-        //     'name' => 'required|string|max:255',
-        //     'mobile' => 'required|string|max:15',
-        // ]);
-
-        // $student->update([
-        //     'name' => $request->input('name'),
-        // ]);
-
-        // // 更新關聯的 mobile 資料
-        // $student->mobileRelation->update([
-        //     'mobile' => $request->input('mobile'),
-        // ]);
-
-        $input=$request->except('_token','method');
+        $input=$request->except('_token','_method');
+        // dd($input);
+        $loves=$input['love'];
+        $loveArr=explode(",",$loves);
+        // dd($loveArr);
 
         // 更新學生資料
         $id=$student->id;
@@ -131,6 +130,15 @@ class StudentController extends Controller
         // $data=Mobile::where('student_id',$id)->first();
         // $data->mobile=$input['mobile'];
         // $data->save();
+
+        // 更新愛好資料
+        Love::where('student_id',$id)->delete();
+        foreach ($loveArr as $value) {
+            $itemLove=new Love;
+            $itemLove->student_id = $id; 
+            $itemLove->love = $value; 
+            $itemLove->save();
+        }        
         
         return redirect()->route('students.index')->with('success', 'Student updated successfully.');
     }
