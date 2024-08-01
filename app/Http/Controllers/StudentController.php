@@ -148,8 +148,16 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
+        //用 Eloquent 關聯方法來刪除資料
+        $student->love()->delete();
         $student->mobileRelation()->delete();
         $student->delete();
+
+        //直接用查詢方式來刪除資料
+        //Love::where('student_id',$student->id)->delete();
+        //Mobile::where('student_id',$student->id)->delete();
+        //Student::where('id',$student->id)->delete();
+
         return redirect()->route('students.index')->with('success', 'Student deleted successfully.');
     }
 }
