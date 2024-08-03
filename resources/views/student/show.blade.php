@@ -14,6 +14,7 @@
   <p>The .table-striped class adds zebra-stripes to a table:</p>  
   <h4>Name：{{$data->name}}</h4>
   <h4>Mobile：{{$data->mobileRelation->mobile}}</h4>  
+  <h4>Love：{{$data->loves}}</h4>  
 </div>
 
 <script src="{{asset('js/bootstrap.min.js')}}"></script>

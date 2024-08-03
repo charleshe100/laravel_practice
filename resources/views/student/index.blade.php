@@ -16,7 +16,7 @@
     </div>
 @endif
 
-<div class="container mt-3 w-50">
+<div class="container mt-3 w-25">
   <h2>Student</h2>
   <p>The .table-striped class adds zebra-stripes to a table:</p>  
   <div class="text-end">
@@ -30,8 +30,8 @@
         <th>No.</th>
         <th>name</th>
         {{-- <th>mobile_student_id</th> --}}
-        <th>mobile_mobile</th>
-        <th>love_love</th>
+        {{-- <th>mobile_mobile</th> --}}
+        {{-- <th>love_love</th> --}}
         <th>operate</th>
       </tr>
     </thead>
@@ -41,13 +41,13 @@
         <td>{{$key+1}}</td>
         <td>{{$item->name}}</td>  
         {{-- <td>{{$item->mobileRelation->student_id}}</td> --}}
-        <td>{{$item->mobileRelation->mobile}}</td>
-        <td>
+        {{-- <td>{{$item->mobileRelation->mobile}}</td> --}}
+        {{-- <td>
           @foreach ($item->love as $value)
             {{$value->love}},              
           @endforeach
 
-        </td>
+        </td> --}}
         <td>
             <a href="{{ route('students.show', ['student' => $item->id]) }}">
               <button class="btn btn-info">Show</button>

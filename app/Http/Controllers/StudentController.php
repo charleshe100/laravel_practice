@@ -77,6 +77,12 @@ class StudentController extends Controller
     {
         $id=$student->id;
         $data = Student::findOrFail($id);
+        $loveArr=[];
+        foreach ($data->love as $value) {
+            array_push($loveArr,$value->love);
+        } 
+        $loves=implode(",",$loveArr);
+        $data['loves']=$loves;
         return view('student.show', compact('data'));
     }
 
