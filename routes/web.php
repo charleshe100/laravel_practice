@@ -47,3 +47,6 @@ Route::resource('students', StudentController::class);
 Route::resource('mobiles', MobileController::class);
 // love Resource Controllers
 Route::resource('loves', LoveController::class);
+
+// excel                                        這excel是controller裡的function名
+Route::get('students_export', [StudentController::class, 'excel'])->name('students.excel');

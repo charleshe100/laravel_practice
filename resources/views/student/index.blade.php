@@ -23,6 +23,9 @@
     <a href="{{route('students.create')}}">
       <button class="btn btn-primary">Add</button>    
     </a>    
+    <a href="{{route('students.excel')}}">
+      <button class="btn btn-success">Excel</button>    
+    </a>    
   </div>          
   <table class="table table-striped">
     <thead>
